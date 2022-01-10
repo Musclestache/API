@@ -9,43 +9,42 @@ describe(`${testName} Test Case`, () => {
             method: "GET",
         }).then((response) => {
             expect(response.status).eq(200);
-            expect(repsonse.body.data.length).eq(6)
-        }),
-    }),
-})
+            expect(response.body.data.length).eq(6)
+        });
+    });
 
-describe(`${testName} Test Case`, () => {
+
     it("Sends a POST request", () => {
         cy.request({
             method: "POST",
             url: apiURL + "/users",
             body: {
-                "id" : "211",
-                "name":"morpheus",
+                "id": "211",
+                "name": "morpheus",
                 "job": "leader",
-                  }
+            }
         }).then((response) => {
             expect(response.status).eq(201);
-            expect(response.body).has.property("job","leader");
-    })
-})
+            expect(response.body).has.property("job", "leader");
+        });
+    });
 
-describe(`${testName} Test Case`, () => {
+
     it("Sends a PUT request", () => {
         cy.request({
             method: "PUT",
             url: apiURL + "/users/2",
-            body: { 
+            body: {
                 "name": "morpheus",
-                "job" : "zion resident",
-                  }
+                "job": "zion resident",
+            }
         }).then((response) => {
             expect(response.status).eq(200);
-            expect(response.body).has.property("job","zion resident");
-    })
-})
+            expect(response.body).has.property("job", "zion resident");
+        });
+    });
 
-describe(`${testName} Test Case`, () => {
+
     it("Sends a DELETE request", () => {
         cy.request({
             method: "DELETE",
@@ -53,6 +52,6 @@ describe(`${testName} Test Case`, () => {
         }).then((response) => {
             expect(response.status).eq(204);
             expect(response.body).to.be.empty;
-        }),
-    }),
+        });
+    });
 })
