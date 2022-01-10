@@ -13,12 +13,22 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
-    it("Sends a GET request for Single List", () => {
+    it("Sends a GET request for Single User", () => {
         cy.request({
             url: apiURL + "/users/2",
             method: "GET",
         }).then((response) => {
             expect(response.status).eq(200);
+        });
+    });
+
+    it("Sends a GET request for Single User Not Found", () => {
+        cy.request({
+            url: apiURL + "/users/23",
+            method: "GET",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).eq(404);
         });
     });
 
