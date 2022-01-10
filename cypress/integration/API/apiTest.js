@@ -3,7 +3,7 @@ const apiURL = "https://reqres.in/api";
 const testName = "Reqres"
 
 describe(`${testName} Test Case`, () => {
-    it("Sends a GET request", () => {
+    it("Sends a GET request for User List", () => {
         cy.request({
             url: apiURL + "/users?page=2",
             method: "GET",
@@ -13,6 +13,14 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
+    it("Sends a GET request for Single List", () => {
+        cy.request({
+            url: apiURL + "/users/2",
+            method: "GET",
+        }).then((response) => {
+            expect(response.status).eq(200);
+        });
+    });
 
     it("Sends a POST request", () => {
         cy.request({
@@ -29,7 +37,6 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
-
     it("Sends a PUT request", () => {
         cy.request({
             method: "PUT",
@@ -43,7 +50,6 @@ describe(`${testName} Test Case`, () => {
             expect(response.body).has.property("job", "zion resident");
         });
     });
-
 
     it("Sends a DELETE request", () => {
         cy.request({
