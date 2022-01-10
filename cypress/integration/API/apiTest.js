@@ -32,6 +32,16 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
+    it("Sends a GET request for List <Resource>", () => {
+        cy.request({
+            url: apiURL + "/unknown",
+            method: "GET",
+        }).then((response) => {
+            expect(response.status).eq(200);
+            expect(response.body.data.length).eq(6)
+        });
+    });
+
     it("Sends a POST request", () => {
         cy.request({
             method: "POST",
