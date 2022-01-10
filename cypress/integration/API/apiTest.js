@@ -76,6 +76,20 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
+    it("Sends a POST Login Request", () => {
+        cy.request({
+            method: "POST",
+            url: apiURL + "/login",
+            body: {
+                "email": "eve.holt@reqres.in",
+                "password": "cityslicka"
+            }
+        }).then((response) => {
+            expect(response.status).eq(200);
+            expect(response.body).has.property("token", "QpwL5tke4Pnpja7X4");
+        });
+    });
+
     it("Sends a PUT request", () => {
         cy.request({
             method: "PUT",
