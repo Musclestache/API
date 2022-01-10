@@ -42,6 +42,15 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
+    it("Sends a GET request for Single <Resource>", () => {
+        cy.request({
+            url: apiURL + "/unknown/2",
+            method: "GET",
+        }).then((response) => {
+            expect(response.status).eq(200);
+        });
+    });
+
     it("Sends a POST request", () => {
         cy.request({
             method: "POST",
