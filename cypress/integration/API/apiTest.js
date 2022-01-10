@@ -51,6 +51,16 @@ describe(`${testName} Test Case`, () => {
         });
     });
 
+    it("Sends a GET request for Single <Resource> Not Found", () => {
+        cy.request({
+            url: apiURL + "/unknown/23",
+            method: "GET",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).eq(404);
+        });
+    });
+
     it("Sends a POST request", () => {
         cy.request({
             method: "POST",
