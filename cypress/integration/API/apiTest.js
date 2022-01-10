@@ -99,4 +99,14 @@ describe(`${testName} Test Case`, () => {
             expect(response.body).to.be.empty;
         });
     });
+
+    it("Sends a GET request for User List with delay", () => {
+        cy.request({
+            url: apiURL + "/users?delay=3",
+            method: "GET",
+        }).then((response) => {
+            expect(response.status).eq(200);
+            expect(response.body.data.length).eq(6)
+        });
+    });
 })
